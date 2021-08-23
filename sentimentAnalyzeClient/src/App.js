@@ -9,7 +9,11 @@ class App extends React.Component {
           sentimentOutput:[],
           sentiment:true
         }
-  
+
+  componentDidMount = () => {
+    document.title = "Sentiment Analyzer";
+  }
+
   renderTextArea = ()=>{
     document.getElementById("textinput").value = "";
     if(this.state.mode === "url") {
@@ -50,7 +54,7 @@ class App extends React.Component {
         } else if (data === "negative"){
           output = <div style={{color:"red",fontSize:20}}>{data}</div>
         } else {
-          output = <div style={{color:"orange",fontSize:20}}>{data}</div>
+          output = <div style={{color:"yellow",fontSize:20}}>{data}</div>
         }
         this.setState({sentimentOutput:output});
       })});
@@ -73,7 +77,7 @@ class App extends React.Component {
   
 
   render() {
-    return (  
+    return (
       <div className="App">
       <button className="btn btn-info" onClick={this.renderTextArea}>Text</button>
         <button className="btn btn-dark"  onClick={this.renderTextBox}>URL</button>

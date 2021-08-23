@@ -64,8 +64,8 @@ app.get("/url/sentiment", (req,res) => {
 
     naturalLanguageUnderstanding.analyze(analyzeParams)
         .then(analysisResults => {
-            sentimentResults = analysisResults.result.sentiment.document;
-            res.send(JSON.stringify(sentimentResults));
+            sentimentResults = analysisResults.result.sentiment.document.label;
+            res.send(sentimentResults);
         })
         .catch(err => {
             console.log('error:', err);
@@ -106,8 +106,8 @@ app.get("/text/sentiment", (req,res) => {
 
     naturalLanguageUnderstanding.analyze(analyzeParams)
         .then(analysisResults => {
-            sentimentResults = analysisResults.result.sentiment.document;
-            res.send(JSON.stringify(sentimentResults));
+            sentimentResults = analysisResults.result.sentiment.document.label;
+            res.send(sentimentResults);
         })
         .catch(err => {
             console.log('error:', err);
